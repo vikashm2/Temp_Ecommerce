@@ -40,30 +40,52 @@ const demoProducts = [
 ];
 
 export default function Home() {
+  const title = "Elevate Your Experience";
+  
   return (
     <Layout>
+      <div className="fixed inset-0 bg-mesh opacity-30 -z-10 animate-pulse-slow"></div>
+      
       {/* Hero Section */}
-      <section className="py-20 flex flex-col items-center text-center">
+      <section className="py-20 md:py-32 flex flex-col items-center text-center relative overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="relative"
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative mb-8"
         >
-          <div className="absolute -inset-4 bg-purple-500/20 blur-3xl rounded-full"></div>
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 relative">
-            Elevate Your <span className="text-gradient">Experience</span>
+          <div className="absolute -inset-10 bg-purple-500/30 blur-[100px] rounded-full animate-pulse"></div>
+          <h1 className="text-6xl md:text-8xl font-black relative tracking-tight leading-none px-4">
+            {title.split(" ").map((word, i) => (
+              <span key={i} className="inline-block mr-4 last:mr-0">
+                {word === "Experience" ? (
+                  <span className="text-gradient drop-shadow-sm">{word}</span>
+                ) : (
+                  word
+                )}
+              </span>
+            ))}
           </h1>
         </motion.div>
         
-        <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-10">
+        <motion.p 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="text-slate-400 text-lg md:text-2xl max-w-2xl mb-12 px-6 leading-relaxed"
+        >
           Discover a curated collection of futuristic products designed for the modern developer and tech enthusiast.
-        </p>
+        </motion.p>
         
-        <div className="flex space-x-4">
-          <Link href="/products" className="btn-primary">Shop Now</Link>
-          <button className="btn-secondary">Learn More</button>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 px-6 w-full sm:w-auto"
+        >
+          <Link href="/products" className="btn-primary text-center">Shop Now</Link>
+          <button className="btn-secondary text-center">Learn More</button>
+        </motion.div>
       </section>
 
       {/* Featured Products Segment */}

@@ -7,9 +7,11 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 glass py-4 px-6 md:px-12 flex items-center justify-between">
-      <Link href="/" className="text-2xl font-bold text-gradient tracking-tight">
-        LAUNCHBASE<span className="text-white">STORE</span>
+    <nav className="sticky top-0 z-50 glass border-b border-white/5 py-5 px-6 md:px-12 flex items-center justify-between transition-all duration-300">
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
+      
+      <Link href="/" className="text-2xl font-black text-gradient tracking-tighter uppercase italic">
+        LAUNCHBASE<span className="text-white drop-shadow-sm">STORE</span>
       </Link>
 
       {/* Desktop Navigation */}
