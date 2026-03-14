@@ -44,7 +44,7 @@ export default function Login() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="glass-card p-10 w-full max-w-md"
+          className="glass-card p-6 sm:p-10 w-full max-w-md"
         >
           <h2 className="text-3xl font-bold mb-2 text-center">Welcome <span className="text-gradient">Back</span></h2>
           <p className="text-gray-400 text-center mb-8">Sign in to your account to continue</p>
