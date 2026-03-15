@@ -35,14 +35,21 @@ async function handler(req, res) {
 
     case 'PUT':
       try {
+        const productToUpdate = await Product.findById(id);
+        if (!productToUpdate) {
+          return res.status(404).json({ message: 'Product not found' });
+        }
+        
+        // ensure requester owns the product
+        if (productToUpdate.seller.toString() !== req.user._id.toString()) {
+          return res.status(403).json({ message: 'Not authorized to update this product' });
+        }
+
         // update existing product record
         const product = await Product.findByIdAndUpdate(id, req.body, {
           new: true,
           runValidators: true,
         });
-        if (!product) {
-          return res.status(404).json({ message: 'Product not found' });
-        }
         res.status(200).json(product);
       } catch (error) {
         res.status(400).json({ message: error.message });
@@ -51,11 +58,18 @@ async function handler(req, res) {
 
     case 'DELETE':
       try {
-        // permanently remove product data
-        const deletedProduct = await Product.deleteOne({ _id: id });
-        if (!deletedProduct) {
+        const productToDelete = await Product.findById(id);
+        if (!productToDelete) {
           return res.status(404).json({ message: 'Product not found' });
         }
+
+        // ensure requester owns the product
+        if (productToDelete.seller.toString() !== req.user._id.toString()) {
+          return res.status(403).json({ message: 'Not authorized to delete this product' });
+        }
+
+        // permanently remove product data
+        await Product.deleteOne({ _id: id });
         res.status(200).json({ message: 'Product deleted' });
       } catch (error) {
         res.status(400).json({ message: error.message });

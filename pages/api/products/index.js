@@ -19,8 +19,10 @@ async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        // retrieve all available products
-        const products = await Product.find({});
+        const { seller } = req.query;
+        const filter = seller ? { seller } : {};
+        // retrieve available products, optionally filtered
+        const products = await Product.find(filter);
         res.status(200).json(products);
       } catch (error) {
         res.status(400).json({ message: error.message });
@@ -29,8 +31,9 @@ async function handler(req, res) {
 
     case 'POST':
       try {
-        // create new product listing
-        const product = await Product.create(req.body);
+        // create new product listing associated with seller
+        const productData = { ...req.body, seller: req.user._id };
+        const product = await Product.create(productData);
         res.status(201).json(product);
       } catch (error) {
         res.status(400).json({ message: error.message });

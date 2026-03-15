@@ -28,6 +28,11 @@ const ProductSchema = new mongoose.Schema({
     required: [true, 'Please provide product stock'],
     default: 0,
   },
+  seller: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: [true, 'A product must be associated with a seller'],
+  },
   createdAt: {
     type: Date,
     default: Date.now,

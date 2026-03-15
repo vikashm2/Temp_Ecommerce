@@ -8,9 +8,23 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  await dbConnect();
-
   const { email, password } = req.body;
+
+  // fallback for testing without database
+  if (!process.env.MONGODB_URI) {
+    if (email && password) {
+      return res.status(200).json({
+        _id: 'mock_id_' + Date.now(),
+        name: 'Test Setup User',
+        email,
+        role: email.includes('seller') ? 'seller' : 'buyer', // simple mock logic
+        token: 'mock_token_for_local_testing',
+      });
+    }
+    return res.status(401).json({ message: 'Email and password required for mock login' });
+  }
+
+  await dbConnect();
 
   try {
     // find user by email
