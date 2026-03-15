@@ -1,56 +1,67 @@
 import Link from 'next/link';
 
-// footer component
+/**
+ * Application Footer Component
+ * Dark themed information section
+ */
 const Footer = () => {
+  /* COPYABLE FOOTER START */
   return (
-    <footer className="mt-auto border-t border-white/10 py-12 px-6 md:px-12 bg-black/50">
+    <footer className="mt-auto border-t border-white/10 py-16 px-6 md:px-12 bg-black/40 backdrop-blur-md">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+        {/* Brand Information Column */}
         <div className="col-span-1 md:col-span-1">
-          <Link href="/" className="text-2xl font-bold text-gradient mb-6 block">
+          <Link href="/" className="text-2xl font-black text-gradient mb-6 block tracking-tighter italic">
             LAUNCHBASE
           </Link>
-          <p className="text-gray-400 text-sm leading-relaxed">
-            The ultimate ecommerce starter template for modern developers.
+          <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
+            The ultimate ultra-premium ecommerce starter template for modern high-performance developers and shops.
           </p>
         </div>
 
+        {/* Shopping Links Column */}
         <div>
-          <h4 className="text-white font-semibold mb-6">Shop</h4>
-          <ul className="space-y-4 text-gray-400 text-sm">
-            <li><Link href="/products" className="hover:text-white transition-colors">All Products</Link></li>
-            <li><Link href="/categories" className="hover:text-white transition-colors">Categories</Link></li>
-            <li><Link href="/deals" className="hover:text-white transition-colors">Featured Deals</Link></li>
+          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Shop</h4>
+          <ul className="space-y-4 text-slate-400 text-sm font-medium">
+            <li><Link href="/products" className="hover:text-purple-400 transition-colors">All Products</Link></li>
+            <li><Link href="/categories" className="hover:text-purple-400 transition-colors">Browse Categories</Link></li>
+            <li><Link href="/deals" className="hover:text-purple-400 transition-colors text-pink-400">Limited Deals</Link></li>
           </ul>
         </div>
 
+        {/* Company Info Column */}
         <div>
-          <h4 className="text-white font-semibold mb-6">Company</h4>
-          <ul className="space-y-4 text-gray-400 text-sm">
-            <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
-            <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-            <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Company</h4>
+          <ul className="space-y-4 text-slate-400 text-sm font-medium">
+            <li><Link href="/about" className="hover:text-purple-400 transition-colors">Our Story</Link></li>
+            <li><Link href="/contact" className="hover:text-purple-400 transition-colors">Contact Support</Link></li>
+            <li><Link href="/terms" className="hover:text-purple-400 transition-colors">Terms of Use</Link></li>
           </ul>
         </div>
 
+        {/* Newsletter Subscription Column */}
         <div>
-          <h4 className="text-white font-semibold mb-6">Newsletter</h4>
-          <p className="text-gray-400 text-sm mb-4">Stay updated with our latest releases.</p>
+          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Newsletter</h4>
+          <p className="text-slate-400 text-sm mb-6">Stay updated with our latest releases and futuristic drops.</p>
           <div className="flex">
             <input 
               type="email" 
               placeholder="Email address" 
-              className="glass rounded-l-lg py-2 px-4 w-full focus:outline-none focus:ring-1 focus:ring-purple-500 text-sm"
+              className="glass rounded-l-2xl py-3 px-5 w-full focus:outline-none focus:ring-1 focus:ring-purple-500 text-sm"
             />
-            <button className="bg-purple-600 px-4 rounded-r-lg hover:bg-purple-700 transition-colors text-sm font-semibold">Join</button>
+            <button className="btn-primary px-6 rounded-l-none rounded-r-2xl py-3 text-sm font-bold">Join</button>
           </div>
         </div>
       </div>
       
-      <div className="mt-12 pt-8 border-t border-white/5 text-center text-gray-500 text-xs">
-        © {new Date().getFullYear()} LaunchBase Store. All rights reserved.
+      {/* Copyright Bottom Bar */}
+      <div className="mt-16 pt-8 border-t border-white/5 text-center text-slate-500 text-xs tracking-widest uppercase">
+        © {new Date().getFullYear()} LaunchBase Store. Engineered for excellence.
       </div>
     </footer>
   );
+  /* COPYABLE FOOTER END */
 };
 
 export default Footer;
+

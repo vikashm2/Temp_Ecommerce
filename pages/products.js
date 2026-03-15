@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import Layout from '../../components/Layout';
-import ProductGrid from '../../components/ProductGrid';
+import Layout from '../components/Layout';
+import ProductGrid from '../components/ProductGrid';
 import { Search, Filter } from 'lucide-react';
 
 // product listing page component

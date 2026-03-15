@@ -1,9 +1,17 @@
 import dbConnect from '../../../lib/dbConnect';
 import Product from '../../../models/Product';
-import { protect } from '../../../lib/middleware';
+import { protect, sellerOnly } from '../../../lib/middleware';
 
-// handle products requests
+/**
+ * Products API Endpoint
+ * Handles fetching all and creating new
+ */
 async function handler(req, res) {
+  // ensure database is connected
+  if (!process.env.MONGODB_URI) {
+    return res.status(503).json({ message: 'Database disconnected. Please check MONGODB_URI.' });
+  }
+  
   await dbConnect();
 
   const { method } = req;
@@ -11,6 +19,7 @@ async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
+        // retrieve all available products
         const products = await Product.find({});
         res.status(200).json(products);
       } catch (error) {
@@ -20,6 +29,7 @@ async function handler(req, res) {
 
     case 'POST':
       try {
+        // create new product listing
         const product = await Product.create(req.body);
         res.status(201).json(product);
       } catch (error) {
@@ -33,10 +43,10 @@ async function handler(req, res) {
   }
 }
 
-// only POST is protected in this simple example for admin
+// wrap POST in seller protection
 export default async function authHandler(req, res) {
   if (req.method === 'POST') {
-    return protect(handler)(req, res);
+    return sellerOnly(handler)(req, res);
   }
   return handler(req, res);
 }

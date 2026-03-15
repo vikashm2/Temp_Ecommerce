@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
   await dbConnect();
 
-  const { name, email, password } = req.body;
+  const { name, email, password, role, shopName, businessDescription } = req.body;
 
   try {
     // check if user exists
@@ -19,11 +19,14 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    // create new user
+    // create new user with details
     const user = await User.create({
       name,
       email,
       password,
+      role: role || 'buyer',
+      shopName,
+      businessDescription,
     });
 
     if (user) {

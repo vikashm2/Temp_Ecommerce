@@ -16,6 +16,20 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide a password'],
   },
+  role: {
+    type: String,
+    enum: ['buyer', 'seller'],
+    default: 'buyer',
+  },
+  // seller specific details
+  shopName: {
+    type: String,
+    trim: true,
+  },
+  businessDescription: {
+    type: String,
+    trim: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

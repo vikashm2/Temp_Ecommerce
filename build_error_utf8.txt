@@ -1,0 +1,16 @@
+﻿
+> ecomm-app@0.1.0 build
+> next build
+
+   Γû▓ Next.js 15.5.12
+
+   Skipping linting
+   Checking validity of types ...
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 3.2s
+   Collecting page data ...
+   Generating static pages (0/15) ...
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+   Generating static pages (11/15) 
+ Γ£ô Generating static pages (15/15)

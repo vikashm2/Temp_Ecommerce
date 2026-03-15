@@ -2,49 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Premium Global Styles */
 @layer base {
   body {
-    @apply bg-[#020617] text-slate-100;
-    font-family: 'Inter', sans-serif;
+    /* Deep navy background for premium feel */
+    @apply bg-[#020617] text-slate-100 antialiased;
+    font-family: 'Outfit', 'Inter', sans-serif;
   }
 }
 
 @layer components {
+  /* Ultra-glass effect for components */
   .glass {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-2xl;
+    @apply bg-white/[0.03] backdrop-blur-2xl border border-white/[0.08] shadow-2xl;
   }
   
+  /* Premium card styling with hover */
   .glass-card {
-    @apply glass rounded-[2rem] transition-all duration-500 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-purple-500/10;
+    @apply glass rounded-[2.5rem] transition-all duration-700 hover:border-purple-500/30 hover:bg-white/[0.06] hover:shadow-[0_0_50px_-12px_rgba(168,85,247,0.2)];
   }
 
+  /* Smooth upward hover animation */
   .glass-card:hover {
-    @apply -translate-y-2;
+    @apply -translate-y-3;
   }
 
+  /* High-end gradient button style */
   .btn-primary {
-    @apply bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 text-white font-bold py-3 px-8 rounded-2xl shadow-xl shadow-purple-500/20 transition-all duration-500 hover:shadow-purple-500/40 hover:scale-105 active:scale-95;
+    @apply bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white font-bold py-4 px-10 rounded-2xl shadow-xl shadow-purple-500/20 transition-all duration-500 hover:shadow-purple-500/40 hover:scale-105 active:scale-95 flex items-center justify-center gap-2;
   }
 
+  /* Minimalist secondary glass button */
   .btn-secondary {
-    @apply glass py-3 px-8 rounded-2xl font-bold transition-all duration-500 hover:bg-white/10 active:scale-95 border border-white/10 hover:border-white/20;
+    @apply glass py-4 px-10 rounded-2xl font-bold transition-all duration-500 hover:bg-white/10 active:scale-95 border border-white/10 hover:border-white/20 flex items-center justify-center gap-2;
   }
 
+  /* Vibrant multi-color text gradient */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400;
   }
 
+  /* Animated background mesh pattern */
   .bg-mesh {
     background-image: 
       radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
       radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
       radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
   }
+
+  /* Special badge for deals */
+  .badge-deal {
+    @apply bg-pink-500/10 text-pink-400 text-[10px] font-black uppercase tracking-widest py-1 px-3 rounded-full border border-pink-500/20;
+  }
 }
 
-/* Custom scrollbar */
+/* Elegant custom scrollbar design */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -52,5 +66,6 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full hover:bg-white/20;
+  @apply bg-white/5 rounded-full hover:bg-white/15 border-2 border-[#030712] transition-colors;
 }
+
