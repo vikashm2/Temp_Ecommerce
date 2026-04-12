@@ -1,67 +1,87 @@
 import Link from 'next/link';
+import { Twitter, Instagram, Github, ArrowRight } from 'lucide-react';
 
 /**
- * Application Footer Component
- * Dark themed information section
+ * Premium Footer Component
  */
 const Footer = () => {
-  /* COPYABLE FOOTER START */
   return (
-    <footer className="mt-auto border-t border-white/10 py-16 px-6 md:px-12 bg-black/40 backdrop-blur-md">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-        {/* Brand Information Column */}
-        <div className="col-span-1 md:col-span-1">
-          <Link href="/" className="text-2xl font-black text-gradient mb-6 block tracking-tighter italic">
-            LAUNCHBASE
-          </Link>
-          <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-            The ultimate ultra-premium ecommerce starter template for modern high-performance developers and shops.
+    <footer className="relative pt-32 pb-12 border-t border-white/5 overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"></div>
+      
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
+          {/* Brand Column */}
+          <div className="col-span-1 md:col-span-1">
+            <Link href="/" className="text-2xl font-black tracking-tighter uppercase italic mb-8 block">
+              LAUNCHBASE<span className="text-purple-5500">STORE</span>
+            </Link>
+            <p className="text-slate-400 text-sm leading-relaxed mb-10 max-w-xs font-medium">
+              Redefining the digital commerce experience with futuristic aesthetics and premium hardware.
+            </p>
+            <div className="flex space-x-6">
+              {[Twitter, Instagram, Github].map((Icon, i) => (
+                <Link key={i} href="#" className="text-slate-500 hover:text-purple-400 transition-all duration-300">
+                  <Icon size={22} />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Links Columns */}
+          <div>
+            <h4 className="text-white text-xs font-black uppercase tracking-[0.3em] mb-10">Exploration</h4>
+            <ul className="space-y-4">
+              {['Launch Collection', 'Featured Drops', 'Trending Now', 'Flash Sales'].map(link => (
+                <li key={link}>
+                  <Link href="#" className="text-slate-500 hover:text-white transition-colors text-sm font-medium flex items-center group">
+                    {link} <ArrowRight size={12} className="ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white text-xs font-black uppercase tracking-[0.3em] mb-10">Company</h4>
+            <ul className="space-y-4">
+              {['About Lab', 'Security', 'Privacy Policy', 'Terms of Service'].map(link => (
+                <li key={link}>
+                  <Link href="#" className="text-slate-500 hover:text-white transition-colors text-sm font-medium">{link}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Status Column */}
+          <div>
+            <h4 className="text-white text-xs font-black uppercase tracking-[0.3em] mb-10">System Status</h4>
+            <div className="glass-milky p-6 rounded-2xl border border-white/5">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span className="text-xs font-black uppercase tracking-widest text-white">All Systems Operational</span>
+              </div>
+              <p className="text-[10px] text-slate-500 font-bold leading-relaxed">
+                Vault transactions and global shipping are currently 100% functional.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Area */}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">
+            © 2026 LAUNCHBASE LABS. DESIGNED FOR THE FUTURE.
           </p>
-        </div>
-
-        {/* Shopping Links Column */}
-        <div>
-          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Shop</h4>
-          <ul className="space-y-4 text-slate-400 text-sm font-medium">
-            <li><Link href="/products" className="hover:text-purple-400 transition-colors">All Products</Link></li>
-            <li><Link href="/categories" className="hover:text-purple-400 transition-colors">Browse Categories</Link></li>
-            <li><Link href="/deals" className="hover:text-purple-400 transition-colors text-pink-400">Limited Deals</Link></li>
-          </ul>
-        </div>
-
-        {/* Company Info Column */}
-        <div>
-          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Company</h4>
-          <ul className="space-y-4 text-slate-400 text-sm font-medium">
-            <li><Link href="/about" className="hover:text-purple-400 transition-colors">Our Story</Link></li>
-            <li><Link href="/contact" className="hover:text-purple-400 transition-colors">Contact Support</Link></li>
-            <li><Link href="/terms" className="hover:text-purple-400 transition-colors">Terms of Use</Link></li>
-          </ul>
-        </div>
-
-        {/* Newsletter Subscription Column */}
-        <div>
-          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Newsletter</h4>
-          <p className="text-slate-400 text-sm mb-6">Stay updated with our latest releases and futuristic drops.</p>
-          <div className="flex">
-            <input 
-              type="email" 
-              placeholder="Email address" 
-              className="glass rounded-l-2xl py-3 px-5 w-full focus:outline-none focus:ring-1 focus:ring-purple-500 text-sm"
-            />
-            <button className="btn-primary px-6 rounded-l-none rounded-r-2xl py-3 text-sm font-bold">Join</button>
+          <div className="flex items-center gap-8">
+             <span className="text-[10px] text-slate-500 font-black uppercase tracking-widest cursor-pointer hover:text-white">English (INTL)</span>
+             <span className="text-[10px] text-slate-500 font-black uppercase tracking-widest cursor-pointer hover:text-white">USD ($)</span>
           </div>
         </div>
       </div>
-      
-      {/* Copyright Bottom Bar */}
-      <div className="mt-16 pt-8 border-t border-white/5 text-center text-slate-500 text-xs tracking-widest uppercase">
-        © {new Date().getFullYear()} LaunchBase Store. Engineered for excellence.
-      </div>
     </footer>
   );
-  /* COPYABLE FOOTER END */
 };
 
 export default Footer;
-
