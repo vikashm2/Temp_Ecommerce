@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import ProductGrid from '../components/ProductGrid';
-import { Search, Filter } from 'lucide-react';
+import { Search, Filter, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-// product listing page component
+/**
+ * Premium Products Listing Page
+ * Features advanced search and refined grid
+ */
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,44 +35,75 @@ export default function ProductsPage() {
     p.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: 0.05, delayChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
   return (
-    <Layout title="All Products | LaunchBase Store">
-      <div className="py-10">
-        <h1 className="text-4xl font-bold mb-10">Explore <span className="text-gradient">Products</span></h1>
+    <Layout title="Explore Collection | LaunchBase Store">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="py-12 md:py-20"
+      >
+        {/* Header Section */}
+        <motion.div variants={itemVariants} className="mb-16">
+          <span className="text-[10px] font-black text-purple-400 uppercase tracking-[0.4em] mb-4 block">
+             The Collection
+          </span>
+          <h1 className="text-5xl md:text-8xl font-black tracking-tighter uppercase italic leading-[0.9]">
+            Explore <span className="text-gradient">Drops</span>
+          </h1>
+        </motion.div>
 
         {/* Search and Filter Bar */}
-        <div className="flex flex-col md:flex-row gap-4 mb-12">
-          <div className="relative flex-grow">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
+        <motion.div variants={itemVariants} className="flex flex-col md:flex-row gap-6 mb-20 relative">
+          <div className="relative flex-grow group">
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-purple-400 transition-colors" size={20} />
             <input 
               type="text"
-              placeholder="Search by name or category..."
+              placeholder="Search by series or category..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full glass rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:ring-1 focus:ring-purple-500"
+              className="w-full glass-milky rounded-3xl py-5 pl-16 pr-6 focus:outline-none focus:ring-1 focus:ring-purple-500/50 text-lg placeholder:text-slate-600 transition-all font-medium"
             />
           </div>
-          <button className="btn-secondary flex items-center justify-center gap-2">
-            <Filter size={18} />
-            Filters
+          <button className="btn-secondary flex items-center justify-center gap-3 px-10 rounded-3xl">
+            <Filter size={20} />
+            <span className="uppercase tracking-widest text-xs font-black">Refine</span>
           </button>
-        </div>
+        </motion.div>
 
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[1, 2, 3, 4].map(i => (
-              <div key={i} className="glass-card h-80 animate-pulse bg-white/5"></div>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
+              <div key={i} className="glass-card aspect-[4/5] animate-pulse bg-white/5"></div>
             ))}
           </div>
         ) : filteredProducts.length > 0 ? (
-          <ProductGrid products={filteredProducts} />
+          <motion.div variants={itemVariants}>
+            <ProductGrid products={filteredProducts} />
+          </motion.div>
         ) : (
-          <div className="text-center py-20 glass-card">
-            <h3 className="text-xl font-semibold mb-2">No products found</h3>
-            <p className="text-gray-400">Try adjusting your search or filters.</p>
-          </div>
+          <motion.div variants={itemVariants} className="text-center py-32 glass-card rounded-[3rem]">
+            <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mb-8 mx-auto border border-white/10">
+               <Sparkles size={32} className="text-slate-600" />
+            </div>
+            <h3 className="text-2xl font-black uppercase tracking-tighter mb-2 italic">No matches found</h3>
+            <p className="text-slate-500 font-medium">Try adjusting your search parameters for better results.</p>
+          </motion.div>
         )}
-      </div>
+      </motion.div>
     </Layout>
   );
 }
