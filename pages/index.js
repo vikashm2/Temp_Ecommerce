@@ -89,7 +89,7 @@ export default function Home() {
             </span>
           </motion.div>
 
-          <motion.h1 variants={itemVariants} className="text-5xl md:text-9xl font-black mb-8 leading-[1.1] tracking-tight uppercase italic pr-4">
+          <motion.h1 variants={itemVariants} className="text-4xl md:text-5xl md:text-9xl font-black mb-8 leading-[1.1] tracking-tight uppercase italic pr-4">
             Future of <br />
             <span className="text-gradient">Commerce</span>
           </motion.h1>
@@ -210,3 +210,5 @@ export default function Home() {
   );
 }
 
+
+// Mobile hero text adjusted

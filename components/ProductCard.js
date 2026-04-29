@@ -28,7 +28,7 @@ const ProductCard = ({ product }) => {
         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
         
         {/* Floating Category Badge */}
-        <div className="absolute top-6 left-6">
+        <div className="absolute top-4 md:p-6 left-6">
           <span className="glass-milky text-[10px] font-black text-purple-300 uppercase tracking-widest px-3 py-1.5 rounded-full border border-white/10">
             {product.category}
           </span>
@@ -80,3 +80,5 @@ const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
+
+// Mobile card padding responsive

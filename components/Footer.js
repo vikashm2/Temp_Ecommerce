@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Area */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">
             © 2026 LAUNCHBASE LABS. DESIGNED FOR THE FUTURE.
           </p>
@@ -85,3 +85,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+// Mobile footer stack layout

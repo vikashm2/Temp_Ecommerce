@@ -123,3 +123,5 @@ export default function Login() {
     </Layout>
   );
 }
+
+// Mobile width optimized

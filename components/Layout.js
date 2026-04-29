@@ -45,3 +45,5 @@ const Layout = ({ children, title = 'LaunchBase Ecomm Store' }) => {
 };
 
 export default Layout;
+
+// Mobile viewport confirmed

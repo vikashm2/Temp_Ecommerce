@@ -35,7 +35,7 @@ const Navbar = () => {
     <nav className={`sticky top-0 z-[60] transition-all duration-500 ${
       scrolled ? 'py-3 bg-[#02040a]/80 backdrop-blur-xl border-b border-white/5' : 'py-6 bg-transparent'
     }`}>
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-6 md:px-12 flex items-center justify-between">
         {/* Brand Logo */}
         <div className="flex-1">
           <Link href="/" className="text-xl md:text-2xl font-black tracking-tighter uppercase italic group">
@@ -166,3 +166,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// Mobile padding optimized

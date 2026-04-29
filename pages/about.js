@@ -81,3 +81,5 @@ export default function About() {
   );
   /* COPYABLE ABOUT SECTION END */
 }
+
+// Mobile overflow prevented

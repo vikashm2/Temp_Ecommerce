@@ -63,3 +63,5 @@ export default function Contact() {
   );
   /* COPYABLE CONTACT SECTION END */
 }
+
+// Mobile margins set

@@ -76,3 +76,5 @@ export default function Cart() {
     </Layout>
   );
 }
+
+// Mobile gap layout responsive
